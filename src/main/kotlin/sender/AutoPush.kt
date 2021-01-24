@@ -18,6 +18,7 @@ class AutoPush {
         bot.launch {
             while (true) {
                 try {
+                    //此处修改查询延迟 强烈建议不小于60秒!!!
                     delay(60000L)
                     Log.i("Get live info...")
                     val pushList = (ConfigManager.getOrNull(ConfigManager.CFG_PUSH_LIST) ?: JSONArray()) as JSONArray
@@ -25,6 +26,7 @@ class AutoPush {
                         ConfigManager.putBool(CFG_NEEDS_PUSH, true)
                         continue
                     }
+                    //此处修改vtb的uid 注意是uid!!不是房间号!!!
                     val vtb = LiveInfo.get("39267739")
                     ConfigManager.put(CFG_LIVE_INFO, vtb?.toJSONObject())
                     when {
@@ -57,6 +59,7 @@ class AutoPush {
             } catch (e: Exception) {
                 Log.e(e, "Send message error!")
             }
+            //此处修改群发间隔 同样不建议太小 容易被ban
             delay(3000L)
         }
     }
