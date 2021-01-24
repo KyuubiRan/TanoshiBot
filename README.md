@@ -19,4 +19,4 @@
 5.拉机器人进群 并且在需要推送的群里输入/on打开推送（此指令需要管理员/群主权限） 帮助菜单/h
 
 ## 为什么登录失败
-请看mirai官方文档——[登录](https://github.com/mamoe/mirai/blob/dev/docs/Bots.md#2-%E7%99%BB%E5%BD%95)
+请看mirai官方文档——[常见登录失败原因](https://github.com/mamoe/mirai/blob/dev/docs/Bots.md#%E5%B8%B8%E8%A7%81%E7%99%BB%E5%BD%95%E5%A4%B1%E8%B4%A5%E5%8E%9F%E5%9B%A0)
