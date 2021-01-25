@@ -11,6 +11,7 @@ object ConfigManager {
     const val CFG_PUSH_LIST = "push_list"              //T:Array       D:[]
     const val CFG_NEEDS_PUSH = "needs_push"            //T:Boolean     D:false
     const val CFG_LIVE_INFO = "live_info"              //T:JSONObject  D:""
+    const val CFG_TARGET_V = "target_v"                //T:Long        D:0L
 
     private val cfgFile = File("${FILE_PATH}config.json")
     private lateinit var config: JSONObject
@@ -65,6 +66,9 @@ object ConfigManager {
             }
             val password = input("password")
             putString(CFG_QQ_PASSWORD, password)
+        }
+        if (getString(CFG_TARGET_V).isEmpty()) {
+            putString(CFG_TARGET_V, "")
         }
         save()
     }

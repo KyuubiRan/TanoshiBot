@@ -10,6 +10,7 @@ import net.mamoe.mirai.message.data.AtAll
 import util.ConfigManager
 import util.ConfigManager.CFG_LIVE_INFO
 import util.ConfigManager.CFG_NEEDS_PUSH
+import util.ConfigManager.CFG_TARGET_V
 import util.Log
 import util.bot
 
@@ -26,8 +27,9 @@ class AutoPush {
                         ConfigManager.putBool(CFG_NEEDS_PUSH, true)
                         continue
                     }
-                    //此处修改vtb的uid 注意是uid!!不是房间号!!!
-                    val vtb = LiveInfo.get("39267739")
+                    val mid = ConfigManager.getString(CFG_TARGET_V)
+                    //此处修改vtb的uid 注意是uid!!不是房间号!!! 也可以修改配置文件(config.json)中的target_v
+                    val vtb = LiveInfo.get(if (mid.isNotEmpty()) mid else "39267739")
                     ConfigManager.put(CFG_LIVE_INFO, vtb?.toJSONObject())
                     when {
                         vtb?.liveStatus != 1 -> {
@@ -49,7 +51,7 @@ class AutoPush {
         val pushList = (ConfigManager.getOrNull(ConfigManager.CFG_PUSH_LIST) ?: JSONArray()) as JSONArray
         if (pushList.isEmpty() || !ConfigManager.getBool(CFG_NEEDS_PUSH)) return@withContext
         if (vtb == null) {
-            Log.e(null, "Vtb info is null!!!")
+            Log.i("Vtb info is null,will not send msg.")
             return@withContext
         }
         for (group in pushList) {
