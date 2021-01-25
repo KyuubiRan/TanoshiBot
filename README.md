@@ -10,11 +10,11 @@
 ## 如何使用
 1.需要一个机器人账号
 
-2.修改AutoPush中的LiveInfo.get(mid) 将mid替换成需要推送的V的uid 注意 是uid 不是房间号 不要搞错了！！
+2.shadowJar build生成一份jar 然后在命令行里输入java -jar xxxx.jar运行
 
-3.shadowJar build生成一份jar 然后在命令行里输入java -jar xxxx.jar运行
+3.输入账号/密码并确认
 
-4.输入账号/密码并确认
+4.修改config.json中target_v的字段(注意 是string类型 不要把引号去掉) 填入需要推送的V的uid 注意是UID!!! 当然 你也可以修改代码AutoPush中LiveInfo.get() 替换else后的字符串
 
 5.拉机器人进群 并且在需要推送的群里输入/on打开推送（此指令需要管理员/群主权限） 帮助菜单/h
 
