@@ -57,11 +57,12 @@ class AutoPush {
         }
         for (group in pushList) {
             try {
-                val msg = MessageChainBuilder()
-                //此处会@全体成员 不需要请注释掉下面AtAll那一行 并且去掉第二行的\n换行符
-                msg.add(AtAll)
-                msg.add("\n大家的爱抖露${vtb.uname}开播啦~\n$vtb")
-                bot.getGroup(group.toString().toLong()).sendMessage(msg.build())
+                val msg = MessageChainBuilder().apply {
+                    //此处会@全体成员 不需要请注释掉下面AtAll那一行 并且去掉第二行的\n换行符
+                    add(AtAll)
+                    add("\n大家的爱抖露${vtb.uname}开播啦~\n$vtb")
+                }.build()
+                bot.getGroup(group.toString().toLong()).sendMessage(msg)
                 Log.i("Now push in $group")
             } catch (e: Exception) {
                 Log.e(e, "Send message error!")
